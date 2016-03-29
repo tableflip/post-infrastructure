@@ -1,0 +1,6 @@
+[tabs]
+post.tableflip.io
+
+# See: `group_vars/production.yml` for group specific vars
+[production]
+post.tableflip.io

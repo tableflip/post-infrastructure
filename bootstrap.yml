@@ -1,0 +1,6 @@
+- hosts: tabs
+  roles:
+    - apt-update
+    - bootstrap
+    - node
+    - nginx

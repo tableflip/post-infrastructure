@@ -1,0 +1,42 @@
+- name: Clone repo
+  become: yes
+  become_user: "{{user}}"
+  git: update=yes version=HEAD repo=ssh://git@github.com/{{repo}}.git dest=/home/{{user}}/{{service}}
+
+- name: npm install
+  shell: HOME=/home/{{user}} npm install
+  args:
+    chdir: /home/{{user}}/{{service}}
+  become: yes
+  become_user: "{{user}}"
+  notify:
+    - Restart {{service}}
+
+- name: Copy config
+  become: yes
+  become_user: "{{user}}"
+  template: src=local.json dest=/home/{{user}}/{{service}}/config/local.json
+  notify:
+    - Restart {{service}}
+
+- name: Copy htpasswd file
+  become: yes
+  copy: content={{secrets.htpasswd}} dest=/etc/nginx/tf-htpasswd mode=0644 force=yes
+  notify:
+    - Restart Nginx
+
+- name: Copy nginx config
+  become: yes
+  template: src=nginx/nginx.conf dest=/etc/nginx/conf.d/{{service}}.conf mode=0644 force=yes
+  notify:
+    - Restart Nginx
+
+- name: Copy Upstart config
+  become: yes
+  template: src=upstart/upstart.conf dest=/etc/init/{{service}}.conf mode=0644 force=yes
+  notify:
+    - Restart {{service}}
+
+- name: Ensure the app is running
+  become: yes
+  service: name={{service}} state=started enabled=yes

@@ -1,0 +1,25 @@
+- name: Remove default nodejs repository
+  become: yes
+  apt_repository: repo='ppa:chris-lea/node.js' state=absent
+
+- name: Add nodesource apt repository key
+  become: yes
+  apt_key:
+    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+
+- name: Add nodesource Node.js apt repository
+  become: yes
+  apt_repository:
+    repo: "deb https://deb.nodesource.com/node_4.x trusty main"
+
+- name: Install Node.js 4.x LTS
+  become: yes
+  apt:
+    name: nodejs
+    state: present
+
+- name: Install build-essential for native addons
+  become: yes
+  apt:
+    name: build-essential
+    state: present
