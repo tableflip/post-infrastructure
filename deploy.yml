@@ -5,3 +5,7 @@
   roles:
     - apt-update
     - post
+
+- hosts: production
+  roles:
+    - post-letsencrypt
