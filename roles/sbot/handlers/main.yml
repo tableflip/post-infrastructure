@@ -1,0 +1,4 @@
+
+- name: Restart sbot
+  become: yes
+  service: name={{service}} state=restarted
