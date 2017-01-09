@@ -2,5 +2,8 @@
   "mailgun": {
     "apiKey": "{{secrets.mailgun.apiKey}}",
     "domain": "post.tableflip.io"
+  },
+  "akismet": {
+    "apiKey": "{{secrets.akismet.apiKey}}"
   }
 }
