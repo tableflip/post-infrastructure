@@ -13,15 +13,3 @@
   template: src=conf/nginx.conf dest=/etc/nginx/nginx.conf mode=0644 force=yes
   notify:
     - Restart Nginx
-
-- name: Add SSL certificate
-  become: yes
-  copy: content={{ssl.crt}} dest=/etc/ssl/certs/{{ssl.domain}}.combined.crt owner=root group=root mode=0600
-  notify:
-    - Restart Nginx
-
-- name: Add SSL private key
-  become: yes
-  copy: content="{{ssl.key}}" dest=/etc/ssl/private/{{ssl.domain}}.key owner=root group=root mode=0600
-  notify:
-    - Restart Nginx
