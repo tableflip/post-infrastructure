@@ -5,3 +5,8 @@
     - node
     - nginx
     - letsencrypt
+    - post
+
+- hosts: production
+  roles:
+    - post-letsencrypt
