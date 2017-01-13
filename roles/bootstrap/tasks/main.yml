@@ -13,6 +13,7 @@
     - public-keys/alan@tableflip.io.id_rsa.pub
     - public-keys/oli@tableflip.io.id_rsa.pub
     - public-keys/richard@tableflip.io.id_rsa.pub
+    - public-keys/bernard@tableflip.io.id_rsa.pub
 
 - name: Set ansible permissions in /etc/sudoers
   become: yes
