@@ -3,7 +3,9 @@
     "apiKey": "{{secrets.mailgun.apiKey}}",
     "domain": "post.tableflip.io"
   },
-  "akismet": {
-    "apiKey": "{{secrets.akismet.apiKey}}"
+  "google": {
+    "captcha": {
+      "tableflip.io": "{{secrets.google.captcha['tableflip.io']}}"
+    }
   }
 }
