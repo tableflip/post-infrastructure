@@ -5,7 +5,8 @@
   },
   "google": {
     "captcha": {
-      "tableflip.io": "{{secrets.google.captcha['tableflip.io']}}"
+      "tableflip.io": "{{secrets.google.captcha['tableflip.io']}}",
+      "brandnewweddings.co.uk": "{{secrets.google.captcha['brandnewweddings.co.uk']}}"
     }
   }
 }
